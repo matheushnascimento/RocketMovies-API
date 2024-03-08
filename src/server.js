@@ -1,4 +1,5 @@
 require("express-async-errors");
+require("dotenv/config");
 
 const cors = require("cors");
 const express = require("express");
@@ -8,7 +9,7 @@ const uploadConfig = require("./configs/upload");
 
 const app = express();
 app.use(cors());
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 
 app.use(express.json());
 
