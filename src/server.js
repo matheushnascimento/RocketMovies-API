@@ -6,6 +6,16 @@ const express = require("express");
 const routes = require("./routes");
 const AppError = require("./utils/AppError");
 const uploadConfig = require("./configs/upload");
+const connection = require("./database/knex");
+
+connection.migrate
+  .latest()
+  .then(() => {
+    console.log("Migrations executadas com sucesso!");
+  })
+  .catch(() => {
+    console.log("Erro ao executar as migrations:", error);
+  });
 
 const app = express();
 app.use(cors());
